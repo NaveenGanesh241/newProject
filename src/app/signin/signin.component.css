@@ -1,0 +1,114 @@
+mat-card {
+    max-width: 400px;
+    margin: auto;
+    margin-top: 100px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(170, 14, 14, 0.1);
+    background-color: rgb(235, 195, 195); 
+    display:flex;
+    justify-content: center;
+ }
+.signup{
+    font-size: 10px;
+    margin:25%;
+    text-decoration: none;
+    color:black;
+    font-weight: bold;
+}
+.fashion{
+    margin-left:110px;
+    color:rgb(48, 4, 28)
+}
+.summa{
+    color:white;
+    background-color: black;
+}
+.input{
+    height:60px;
+    width: 250px;
+}
+
+
+/* signup css */
+
+.formval{
+    display:flex;
+    flex-direction: column;
+}
+.formcontrol{
+    width: 300px;
+    height:25px;
+    margin-bottom: 2%;
+}
+.cont{
+    display: flex;
+    justify-content: center;
+}
+.submit{
+    width:100px;
+    height:25px;
+}
+.sub{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+.form{
+    /* margin-top: 2%; */
+    font-size: small;
+}
+.error{
+    border:1px solid red;
+}
+.warn{
+    color:red;
+}
+.card{
+    width: 600px ;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background-color: rgb(235, 195, 195); 
+    color:rgb(48, 4, 28);
+}
+mat-select{
+    background-color: rgb(255, 255, 255);
+}
+.fashion{
+    margin-left: 0px;
+}
+.cal{
+    margin-top: -5px;
+}
+.formin{
+    display:flex;
+    flex-direction: column;
+}
+.incontrol{
+    width:250px;
+    height:30px;
+    border:none;
+    margin-bottom: 10px;
+}
+.sbtn{
+    height:30px;
+    width: 80px;
+    margin-top: 10px;
+    color:white;
+    background-color: rgb(48, 4, 28);
+    border:none;
+}
+.sbtn:hover{
+    cursor: pointer;
+}
+mat-card-title{
+    color:rgb(48, 4, 28);
+}
+.sup{
+    text-decoration: none;
+    color:black;
+    font-size:70%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}

@@ -1,0 +1,162 @@
+<app-header></app-header>
+<mat-tab-group>
+  <mat-tab label="Signin"> 
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title class="fashion"><h1>Fashion</h1></mat-card-title>
+        <mat-card-title><h4>Sign In</h4></mat-card-title>
+      </mat-card-header>
+    
+      <mat-card-content>
+          <form #signin="ngForm" (ngSubmit)="signinfn()">
+            <div class="formin">
+              <label class="inlabel">Email</label>
+              <input type="text" class="incontrol" id="mail" placeholder="Email" [(ngModel)]="signinForm.mail" name="mail" #mail="ngModel">
+            </div>
+
+
+            <div class="formin">
+              <label class="inlabel">Password</label>
+              <input type="password" class="incontrol" id="password" placeholder="password" [(ngModel)]="signinForm.password" name="password" #password="ngModel">
+            </div>
+
+            <div class="formin">
+              <button class="sbtn" type="submit">SignIn</button>
+              <!-- <input type="submit" class="sbtn" style="background-color: rgb(48, 4, 28)" placeholder="SignIn">SignIn -->
+            </div>
+          <a class="sup" (click)="signup()">dont have account? Sign up</a>
+        </form>
+      </mat-card-content>
+    </mat-card>  
+  </mat-tab>
+
+<!-- signup -->
+
+
+  <mat-tab label="Signup" id="signuptab">  
+    <div class="cont">
+      <mat-card class="card">
+  <div class="form">
+      <mat-card-header>
+          <mat-card-title class="fashion"><h1>Fashion</h1></mat-card-title>
+          <mat-card-title><h4>Sign Up</h4></mat-card-title>
+        </mat-card-header>
+      <form [formGroup]="signupForm" (ngSubmit)="signupForm.status!=='INVALID' && signupfn()">
+  
+          <div class="formval">
+              <label class="formlabel">First Name</label>
+              <input type="text" class="formcontrol" id="fname" placeholder="First Name" formControlName="fname" [ngClass]="{error : getcontrol('fname')?.errors && getcontrol('fname')?.touched}">
+              <div *ngIf="getcontrol('fname')?.errors && getcontrol('fname')?.touched">
+                  <small class="warn" *ngIf="getcontrol('fname')?.errors?.['required']">First name is required</small>
+                  <small class="warn" *ngIf="getcontrol('fname')?.errors?.['maxlength']">Exceeding max length</small>
+              </div>
+          </div>
+  
+          <div class="formval">
+              <label class="formlabel">Last Name</label>
+              <input type="text" class="formcontrol" id="lname" placeholder="Last Name" formControlName="lname" [ngClass]="{error : getcontrol('lname')?.errors && getcontrol('lname')?.touched}">
+              <div *ngIf="getcontrol('lname')?.errors && getcontrol('lname')?.touched">
+                  <small class="warn" *ngIf="getcontrol('lname')?.errors?.['required']">Last name is required</small>
+                  <small class="warn" *ngIf="getcontrol('lname')?.errors?.['maxlength']">Exceeding max length</small>
+              </div>
+          </div>
+          <div class="formval">
+              <mat-label>DOB</mat-label>
+              <input matInput [matDatepicker]="picker" class="formcontrol" id="dob" placeholder="DOB" formControlName="dob" [ngClass]="{error : getcontrol('dob')?.errors && getcontrol('dob')?.touched}">
+              <div class="cal">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker">
+              </mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker></div>
+              <div *ngIf="getcontrol('dob')?.errors && getcontrol('dob')?.touched">
+                  <small class="warn" *ngIf="getcontrol('dob')?.errors?.['required']">DOB name is required</small>
+              </div>
+  
+    </div>
+  
+          <div class="formval">
+              <mat-label>Gender</mat-label>
+              <mat-radio-group aria-label="Select an option" class="formcontrol" id="gender" formControlName="gender" [ngClass]="{error : getcontrol('gender')?.errors && getcontrol('gender')?.touched}">
+                  <mat-radio-button value="male">Male</mat-radio-button>
+                  <mat-radio-button value="female">Female</mat-radio-button>
+                </mat-radio-group> 
+          </div>
+  
+          <div class="formval">
+              <label class="formlabel">Age</label>
+              <input type="number" class="formcontrol" id="age" placeholder="Age" formControlName="age" [ngClass]="{error : getcontrol('age')?.errors && getcontrol('age')?.touched}">
+              <div *ngIf="getcontrol('age')?.errors && getcontrol('age')?.touched">
+                  <small class="warn" *ngIf="getcontrol('age')?.errors?.['required']">Age is required</small>
+                  <small class="warn" *ngIf="getcontrol('age')?.errors?.['max'] || getcontrol('age')?.errors?.['min'] ">Age is between 18 and 60</small>
+                  <small class="warn" *ngIf="getcontrol('age')?.errors?.['pattern']">Enter valid age</small>
+              </div>
+          </div>
+  
+          
+          <div class="formval">
+              <mat-label>Country</mat-label>
+              <mat-select id="country" placeholder="Country" formControlName="country" [ngClass]="{error : getcontrol('country')?.errors && getcontrol('country')?.touched}">
+              <mat-option>None</mat-option>
+              <mat-option *ngFor="let country of countries" [value]="country">{{country}}</mat-option>
+              </mat-select>
+              <div *ngIf="getcontrol('country')?.errors && getcontrol('country')?.touched">
+                  <small class="warn" *ngIf="getcontrol('country')?.errors?.['required']">Country is required</small>
+              </div>
+  
+          </div>
+  
+          <div class="formval">
+              <label class="formlabel">Number</label>
+              <input type="text" class="formcontrol" id="number" placeholder="Number" formControlName="number" [ngClass]="{error : getcontrol('number')?.errors && getcontrol('number')?.touched}">
+              <div *ngIf="getcontrol('number')?.errors && getcontrol('number')?.touched">
+                  <small class="warn" *ngIf="getcontrol('number')?.errors?.['required']">Number is required</small>
+                  <small class="warn" *ngIf="getcontrol('number')?.errors?.['maxlength'] || getcontrol('number')?.errors?.['minlength'] ">Number must be 10 digit</small>
+                  <small class="warn" *ngIf="getcontrol('number')?.errors?.['pattern']">Enter valid number</small>
+              </div>
+  
+          </div>
+  
+          <div class="formval">
+              <label class="formlabel">Email</label>
+              <input type="email" class="formcontrol" id="email" placeholder="Email" formControlName="email" [ngClass]="{error : getcontrol('email')?.errors && getcontrol('email')?.touched}">
+              <div *ngIf="getcontrol('email')?.errors && getcontrol('email')?.touched">
+                  <small class="warn" *ngIf="getcontrol('email')?.errors?.['required']">Email is required</small>
+                  <small class="warn" *ngIf="getcontrol('email')?.errors?.['maxlength'] ">Exceeding max character</small>
+                  <small class="warn" *ngIf="getcontrol('email')?.errors?.['pattern']">Enter valid mail</small>
+              </div>
+          </div>
+  
+          <div class="formval">
+              <label class="formlabel">Password</label>
+              <input type="password" class="formcontrol" id="password" placeholder="Password" formControlName="password" [ngClass]="{error : getcontrol('password')?.errors && getcontrol('password')?.touched}">
+              <div *ngIf="getcontrol('password')?.errors && getcontrol('password')?.touched">
+                  <small class="warn" *ngIf="getcontrol('password')?.errors?.['required']"> Enter password</small>
+                  <small class="warn" *ngIf="getcontrol('password')?.errors?.['maxlength'] || getcontrol('password')?.errors?.['minlength'] ">Password should min 8 and max 12</small>
+              </div>
+          </div>
+  
+          <div class="formval">
+              <label class="formlabel">Confirm Password</label>
+              <input type="password" class="formcontrol" id="confirm_password" placeholder="Confirm Password" formControlName="confirm_password" [ngClass]="{error : getcontrol('confirm_password')?.errors && getcontrol('confirm_password')?.touched}">
+              <div *ngIf="getcontrol('confirm_password')?.errors && getcontrol('confirm_password')?.touched">
+                  <small class="warn" *ngIf="getcontrol('confirm_password')?.errors?.['required']"> Confirm password</small>
+                  <small class="warn" *ngIf="getcontrol('confirm_password')?.errors?.['maxlength']">Max length is 12</small>
+                  <small class="warn" *ngIf="getcontrol('confirm_password')?.errors?.['minlength'] ">Min length is 8 </small>
+  
+              </div>
+          </div>
+  <mat-card-footer>
+      
+          <div class="sub">
+              <input type="submit" class="submit" [disabled]="signupForm.status=='INVALID' ">
+          </div>
+      </mat-card-footer>
+      </form>
+      </div>
+  </mat-card>
+  </div>
+  </mat-tab>
+</mat-tab-group>
+
+
+  
