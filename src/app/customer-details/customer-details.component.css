@@ -7,3 +7,19 @@ mat-card-content{
     border:1px solid rgb(0, 0, 0);
     
 }
+
+table {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 50%;
+  }
+  
+  td, th {
+    width: 25%;
+  }
+ .action{
+  display:flex;
+ }

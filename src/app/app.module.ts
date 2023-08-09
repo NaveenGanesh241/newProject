@@ -24,6 +24,10 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTabsModule} from '@angular/material/tabs';
+import { DialogformComponent } from './dialogform/dialogform.component';
+import { MatSortModule } from '@angular/material/sort';
+import { MatFormFieldModule } from '@angular/material/form-field';
+// import { ServiceWorkerModule } from '@angular/service-worker/'; 
 
 
 @NgModule({
@@ -33,7 +37,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     HomepageComponent,
     CatageoryComponent,
     SigninComponent,
-    CustomerDetailsComponent
+    CustomerDetailsComponent,
+    DialogformComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +60,14 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatDialogModule,
     MatProgressBarModule,
     MatSelectModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSortModule,
+    MatInputModule,
+    MatFormFieldModule
+    // ServiceWorkerModule.register('ngsw-worker.js', {
+    //   enabled: !isDevMode(),
+    //   registrationStrategy: 'registerWhenStable:30000'
+    // })
   ],
   providers: [],
   bootstrap: [AppComponent]

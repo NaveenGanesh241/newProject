@@ -1,0 +1,46 @@
+<div mat-dialog-title >From</div>
+<div mat-dialog-content>
+<form [formGroup]="newform" (ngSubmit)="newformsubmit()">
+    <div class="row">
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput type="text" formControlName="name">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Mail</mat-label>
+            <input matInput type="mail" formControlName="mail">
+          </mat-form-field>
+    </div>
+
+    <div class="row">
+        <mat-form-field class="example-full-width">
+            <mat-label>DOB</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dob">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Age</mat-label>
+            <input matInput type="number"formControlName="age">
+          </mat-form-field>
+    </div>
+
+    <div class="row">
+        <mat-radio-group aria-label="Select an Option" formControlName="gender">
+            <label>Gender</label>
+            <mat-radio-button value="male">Male</mat-radio-button>
+            <mat-radio-button value="female">Female</mat-radio-button>
+            <mat-radio-button value="others">Others</mat-radio-button>
+          </mat-radio-group>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button type="button" [mat-dialog-close]="false" >Cancel</button>
+        <button mat-raised-button color="primary" type="submit" >{{data ? 'Update':'Save'}}</button>
+    </div>
+    
+</form> 
+</div>
+

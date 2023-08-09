@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import {userdetails} from '../interface/catageoryitems'
 
 @Injectable({
@@ -82,8 +82,11 @@ export class UserService {
 ]
 
 
+
   getdata()
   {
     return this.userdetail;
   }
+  
+
 }

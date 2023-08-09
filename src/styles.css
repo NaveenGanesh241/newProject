@@ -3,3 +3,6 @@
     font-family:'century gothic';
 }
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';

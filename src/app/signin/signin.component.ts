@@ -1,6 +1,7 @@
 import { Component,OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AbstractControl, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-signin',
@@ -8,14 +9,19 @@ import { AbstractControl, FormControl, FormGroup, NgForm, Validators } from '@an
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent {
+  
+  constructor(private up:Router,private url:ActivatedRoute,private service:UserService){}
+  
 signinForm={
   mail:'',
   password:''
 }
  
 
-constructor(private up:Router,private url:ActivatedRoute){}
+
   
+
+
   signin : any={}
 
   // signin : { email: string; password: string; };
@@ -28,7 +34,8 @@ constructor(private up:Router,private url:ActivatedRoute){}
 
       password :this.url.snapshot.params['password']
     }
-    console.log(this.signin.email)
+    // console.log(this.signin)
+    
   }
 
   signinfn(){
@@ -68,8 +75,11 @@ constructor(private up:Router,private url:ActivatedRoute){}
 
   signupfn(){
     console.log(this.signupForm.value)
+    // this.service.createData(this.signupForm.value);
   } 
 
+
+ 
   getcontrol(name:any) :AbstractControl | null
   {
     return this.signupForm.get(name)
@@ -324,4 +334,6 @@ constructor(private up:Router,private url:ActivatedRoute){}
     "Zambia",
     "Zimbabwe"
   ]
+
+  
 }
