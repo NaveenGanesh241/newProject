@@ -8,7 +8,10 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
   constructor(private router:Router){}
-  signin(){
-    this.router.navigate(["signin"])
+  logout(){
+    this.router.navigate([""])
+  }
+  tablepageroute(){
+    this.router.navigate(['admin'])
   }
 }

@@ -7,8 +7,12 @@
         <a href="#">Accessories</a>
         <a href="#"class="nav2">Wishlist</a>
         <a href="#"class="nav2">Cart</a>
-        <button mat-raised-button style="background-color: rgb(122, 54, 82);" class="matbtn" (click)="signin()">Login</button>
-
+        <!-- <button mat-raised-button style="background-color: rgb(122, 54, 82);" class="matbtn" (click)="signin()">Login</button> -->
+        <button mat-mini-fab	 [matMenuTriggerFor]="menu" class="matbtn"><mat-icon style="color:rgb(255, 255, 255); padding: 0px;">perm_identity</mat-icon></button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="logout()">LogOut</button>
+          <button mat-menu-item (click)="tablepageroute()">Admin</button>
+        </mat-menu>
     </nav>
     
     

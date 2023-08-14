@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import{BrowserAnimationsModule} from '@angular/platform-browser/animations'
 
@@ -27,8 +27,9 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { DialogformComponent } from './dialogform/dialogform.component';
 import { MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
-// import { ServiceWorkerModule } from '@angular/service-worker/'; 
-
+import { ButtonModule } from 'primeng/button';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -63,11 +64,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatTabsModule,
     MatSortModule,
     MatInputModule,
-    MatFormFieldModule
-    // ServiceWorkerModule.register('ngsw-worker.js', {
-    //   enabled: !isDevMode(),
-    //   registrationStrategy: 'registerWhenStable:30000'
-    // })
+    MatFormFieldModule,
+    ButtonModule,
+    MatMenuModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

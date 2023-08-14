@@ -6,11 +6,11 @@ import { CustomerDetailsComponent } from './customer-details/customer-details.co
 
 const routes: Routes = [
   {path:'home',component:HomepageComponent},
-  { path: '',   redirectTo: 'home', pathMatch: 'full' },
-  {path:'signin',component:SigninComponent},
-  {path:'signup',component:SigninComponent},
+  // { path: '',   redirectTo: 'home', pathMatch: 'full' },
+  {path:'',component:SigninComponent},
+  // {path:'signup',component:SigninComponent},
   {path:'signin/:email/:password',component:SigninComponent},
-  {path:'admin/userdetails',component:CustomerDetailsComponent}
+  {path:'admin',component:CustomerDetailsComponent}
 ];
 
 @NgModule({

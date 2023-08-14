@@ -1,4 +1,4 @@
-<app-header></app-header>
+<!-- <app-header></app-header> -->
 <mat-tab-group>
   <mat-tab label="Signin"> 
     <mat-card>
@@ -20,10 +20,10 @@
             </div>
 
             <div class="formin">
-              <button class="sbtn" type="submit">SignIn</button>
+              <button class="sbtn" type="submit" (click)="  homepagefn()">SignIn</button>
               <!-- <input type="submit" class="sbtn" style="background-color: rgb(48, 4, 28)" placeholder="SignIn">SignIn -->
             </div>
-          <a class="sup" (click)="signup()">dont have account? Sign up</a>
+          <!-- <a class="sup" (click)="signup()">dont have account? Sign up</a> -->
         </form>
       </mat-card-content>
     </mat-card>  

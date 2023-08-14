@@ -47,10 +47,10 @@ signinForm={
   {
     this.up.navigate(["/signup"])  } 
 
-  // homeroute()
-  // {
-  //   this.up.navigate([''])
-  // }
+  homepagefn()
+  {
+    this.up.navigate(['home'])
+  }
 
 
   //signup ts
