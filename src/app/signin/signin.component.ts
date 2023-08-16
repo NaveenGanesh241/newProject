@@ -40,17 +40,13 @@ signinForm={
 
   signinfn(){
     console.log(this.signinForm)
+    this.up.navigate(['home'])
     return this.signinForm
   }
  
   signup()
   {
     this.up.navigate(["/signup"])  } 
-
-  homepagefn()
-  {
-    this.up.navigate(['home'])
-  }
 
 
   //signup ts
@@ -73,10 +69,12 @@ signinForm={
   })
 
 
+
   signupfn(){
     console.log(this.signupForm.value)
     // this.service.createData(this.signupForm.value);
   } 
+
 
 
  

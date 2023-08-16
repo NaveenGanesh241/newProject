@@ -11,16 +11,16 @@
           <form #signin="ngForm" (ngSubmit)="signinfn()">
             <div class="formin">
               <label class="inlabel">Email</label>
-              <input type="text" class="incontrol" id="mail" placeholder="Email" [(ngModel)]="signinForm.mail" name="mail" #mail="ngModel">
+              <input type="email" class="incontrol" id="email" placeholder="Email" [(ngModel)]="signinForm.mail"  required maxlength="32" [pattern]="emailregex" name="mail" #mail="ngModel">
             </div>
 
             <div class="formin">
               <label class="inlabel">Password</label>
-              <input type="password" class="incontrol" id="password" placeholder="password" [(ngModel)]="signinForm.password" name="password" #password="ngModel">
+              <input type="password" class="incontrol" id="password" placeholder="password" [(ngModel)]="signinForm.password" name="password" #password="ngModel" required minlength="8" maxlength="12">
             </div>
 
             <div class="formin">
-              <button class="sbtn" type="submit" (click)="  homepagefn()">SignIn</button>
+              <input type="submit" class="sbtn" type="submit" [disabled]="signin.invalid">
               <!-- <input type="submit" class="sbtn" style="background-color: rgb(48, 4, 28)" placeholder="SignIn">SignIn -->
             </div>
           <!-- <a class="sup" (click)="signup()">dont have account? Sign up</a> -->
