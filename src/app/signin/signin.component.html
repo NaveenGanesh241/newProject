@@ -11,7 +11,12 @@
           <form #signin="ngForm" (ngSubmit)="signinfn()">
             <div class="formin">
               <label class="inlabel">Email</label>
-              <input type="email" class="incontrol" id="email" placeholder="Email" [(ngModel)]="signinForm.mail"  required maxlength="32" [pattern]="emailregex" name="mail" #mail="ngModel">
+              <input type="email" class="incontrol" id="email" placeholder="Email" [(ngModel)]="signinForm.mail"  required maxlength="32" [pattern]="emailregex" name="mail" #mail="ngModel" [ngClass]="{error:mail.errors && mail.touched}">
+              <div *ngIf="mail.errors && mail.touched">
+                <small *ngIf="mail.errors['required']">Enter the mail</small>
+                <small *ngIf="mail.errors['pattern']">Enter the valid mail</small>
+
+              </div>
             </div>
 
             <div class="formin">
