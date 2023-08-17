@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { MembersService } from '../service/members.service';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -28,18 +28,24 @@ export class DialogformComponent implements OnInit{
 
     return '';
   };
+  emailregex=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
   constructor(private fb:FormBuilder,private memser:MembersService,
     private dialog:MatDialogRef<DialogformComponent>,
     @Inject(MAT_DIALOG_DATA) public data:any){
   this.newform= this.fb.group({
-    name:"",
-    mail:"",
-    dob:"",
-    age: null,
-    gender:""
+    name:new FormControl("",[Validators.required]),
+    mail:new FormControl("",[Validators.required,Validators.email]),
+    dob:new FormControl("",[Validators.required]),
+    age: new FormControl("",[Validators.required]),
+    gender:new FormControl("",[Validators.required])
   })
 }
+getcontrol(name:any) :AbstractControl | null
+  {
+    return this.newform.get(name)
+  }
 
+  
 newformsubmit(){
   console.log(this.newform.valid)
   if(this.data){
@@ -68,6 +74,14 @@ newformsubmit(){
       })
   }
   
-
+  // console.log(this.age)
+  console.log(this.newform.value.dob.getFullYear())
+  console.log(this.currentdate.getFullYear() - this.newform.value.dob.getFullYear())
 }
+// currentdate : Date
+currentdate =new Date
+
+// age  = this.currentdate.getFullYear() - this.newform.value.dob.getFullYear()
+
+
 }

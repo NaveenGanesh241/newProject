@@ -115,3 +115,7 @@ mat-card-title{
 input.ng-invalid.ng-touched{
     border: 1px solid red;
 }
+.errormsg{
+    color:red;
+    font-size: smaller;
+}

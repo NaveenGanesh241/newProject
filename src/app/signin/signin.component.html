@@ -12,9 +12,9 @@
             <div class="formin">
               <label class="inlabel">Email</label>
               <input type="email" class="incontrol" id="email" placeholder="Email" [(ngModel)]="signinForm.mail"  required maxlength="32" [pattern]="emailregex" name="mail" #mail="ngModel" [ngClass]="{error:mail.errors && mail.touched}">
-              <div *ngIf="mail.errors && mail.touched">
-                <small *ngIf="mail.errors['required']">Enter the mail</small>
-                <small *ngIf="mail.errors['pattern']">Enter the valid mail</small>
+              <div *ngIf="mail.errors && mail.touched" >
+                <small *ngIf="mail.errors['required']"class="errormsg">Enter the mail</small>
+                <small *ngIf="mail.errors['pattern']"class="errormsg">Enter the valid mail</small>
 
               </div>
             </div>
@@ -22,6 +22,11 @@
             <div class="formin">
               <label class="inlabel">Password</label>
               <input type="password" class="incontrol" id="password" placeholder="password" [(ngModel)]="signinForm.password" name="password" #password="ngModel" required minlength="8" maxlength="12">
+              <div *ngIf="password.errors && password.touched" >
+                <small *ngIf="password.errors['required']"class="errormsg">Enter the Password</small>
+                <small *ngIf="password.errors['minlength'] && password.errors['maxlength']" class="errormsg">Password should be min 8 and max 12 character</small>
+
+              </div>
             </div>
 
             <div class="formin">
