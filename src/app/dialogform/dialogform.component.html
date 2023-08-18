@@ -1,4 +1,4 @@
-<div mat-dialog-title >From</div>
+<div mat-dialog-title >Form</div>
 <div mat-dialog-content>
 <form [formGroup]="newform" (ngSubmit)="newformsubmit()">
     <div class="row">
@@ -20,16 +20,16 @@
     <div class="row">
         <mat-form-field class="example-full-width">
             <mat-label>DOB</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="dob">
+            <input matInput [matDatepicker]="picker" formControlName="dob" (ngModelChange)="agefn()">
             <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
           </mat-form-field>
 
-          <!-- <mat-form-field>
+          <mat-form-field>
             <mat-label>Age</mat-label>
             <input matInput type="number"formControlName="age">
-          </mat-form-field> -->
+          </mat-form-field>
     </div>
 
     <div class="row">

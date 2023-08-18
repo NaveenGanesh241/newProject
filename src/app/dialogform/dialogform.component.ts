@@ -76,12 +76,21 @@ newformsubmit(){
   
   // console.log(this.age)
   console.log(this.newform.value.dob.getFullYear())
-  console.log(this.currentdate.getFullYear() - this.newform.value.dob.getFullYear())
+  // console.log(this.currentdate.getFullYear() - this.newform.value.dob.getFullYear())
 }
 // currentdate : Date
-currentdate =new Date
 
+// currentdate =new Date
 // age  = this.currentdate.getFullYear() - this.newform.value.dob.getFullYear()
 
+agefn(){
+  const currentdate =new Date
+  const birthdate = this.newform.value.dob
 
+  const age1= currentdate.getFullYear() - birthdate.getFullYear()
+  this.newform.patchValue({
+    age : age1
+  })
+  console.log(age1)
+}
 }

@@ -29,11 +29,27 @@
     },
     {
       "name": "ganesh",
-      "mail": "g@mail",
-      "dob": "2023-08-02T18:30:00.000Z",
-      "age": 22,
+      "mail": "ganesh@gmai",
+      "dob": "1994-03-02T18:30:00.000Z",
+      "age": 29,
       "gender": "male",
       "id": 2
+    },
+    {
+      "name": "fd",
+      "mail": "sdf@d",
+      "dob": "1992-03-04T18:30:00.000Z",
+      "age": 31,
+      "gender": "male",
+      "id": 3
+    },
+    {
+      "name": "jjhj",
+      "mail": "gf@hg",
+      "dob": "1992-12-09T18:30:00.000Z",
+      "age": 31,
+      "gender": "male",
+      "id": 4
     }
   ]
 }
