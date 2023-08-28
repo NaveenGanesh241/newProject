@@ -1,7 +1,9 @@
-import { Component,OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AbstractControl, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { UserService } from '../service/user.service';
+import { Observable, ReplaySubject } from 'rxjs';
+import { startWith, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-signin',
@@ -9,80 +11,10 @@ import { UserService } from '../service/user.service';
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent {
-  
-  constructor(private up:Router,private url:ActivatedRoute,private service:UserService){}
-  
-signinForm={
-  mail:'',
-  password:''
-}
- 
-
-
-  
-
-
-  signin : any={}
-
-  // signin : { email: string; password: string; };
- 
-  ngOnInit():void
-  {
-    console.log(this.url.snapshot.params)
-    this.signin = {
-      email:this.url.snapshot.params['email'],
-
-      password :this.url.snapshot.params['password']
-    }
-    // console.log(this.signin)
-    
-  }
-
-  signinfn(){
-    console.log(this.signinForm)
-    this.up.navigate(['home'])
-    return this.signinForm
-  }
- 
-  signup()
-  {
-    this.up.navigate(["/signup"])  } 
-
-
-  //signup ts
-
-
-  numberregex = /^\d+$/
-  emailregex=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-
-  signupForm = new FormGroup({
-    fname : new FormControl("",[Validators.required,Validators.maxLength(32)]),
-    lname : new FormControl("",[Validators.required,Validators.maxLength(32)]),
-    age : new FormControl("",[Validators.required,Validators.max(60),Validators.min(18),Validators.pattern(this.numberregex)]),
-    dob: new FormControl("",[Validators.required]),
-    gender:new FormControl("",[Validators.required]),
-    country:new FormControl("",[Validators.required]),
-    number : new FormControl("",[Validators.required,Validators.maxLength(10),Validators.minLength(10),Validators.pattern(this.numberregex)]),
-    email :new FormControl ("",[Validators.required,Validators.maxLength(32),Validators.pattern(this.emailregex)]),
-    password :new FormControl ("",[Validators.required,Validators.minLength(8),Validators.maxLength(32)]),
-    confirm_password :new FormControl ("",[Validators.required,Validators.minLength(8),Validators.maxLength(32)])
-  })
-
-
-
-  signupfn(){
-    console.log(this.signupForm.value)
-    // this.service.createData(this.signupForm.value);
-  } 
-
-
-
- 
-  getcontrol(name:any) :AbstractControl | null
-  {
-    return this.signupForm.get(name)
-  }
-  countries:string[]=[
+  // filteredOptions1: any;
+  signupForm: any = FormGroup;
+  public filteredOptions1: ReplaySubject<any[]> = new ReplaySubject<any[]>();
+  countries: string[] = [
     "Afghanistan",
     "Albania",
     "Algeria",
@@ -332,6 +264,111 @@ signinForm={
     "Zambia",
     "Zimbabwe"
   ]
+  constructor(private up: Router, private url: ActivatedRoute, private service: UserService,
+    private fb: FormBuilder) {
+  }
 
-  
+  signinForm = {
+    mail: '',
+    password: ''
+  }
+
+
+
+
+
+
+  signin: any = {}
+
+  // signin : { email: string; password: string; };
+
+  ngOnInit(): void {
+    console.log(this.url.snapshot.params)
+    this.signin = {
+      email: this.url.snapshot.params['email'],
+
+      password: this.url.snapshot.params['password']
+    }
+    // console.log(this.signin)
+    this.callForm();
+    this.filteredOptions1.next(this.countries.slice());
+    console.log(this.countries);
+    console.log(this.filteredOptions1);
+
+  }
+
+  signinfn() {
+    console.log(this.signinForm)
+    this.up.navigate(['home'])
+    return this.signinForm
+  }
+
+  signup() {
+    this.up.navigate(["/signup"])
+  }
+
+
+  //signup ts
+
+
+  numberregex = /^\d+$/
+  emailregex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+
+
+
+  callForm() {
+    this.signupForm = this.fb.group({
+      fname: ["", Validators.compose([Validators.required, Validators.maxLength(32)])],
+      lname: ["", Validators.compose([Validators.required, Validators.maxLength(32)])],
+      age: ["", Validators.compose([Validators.required, Validators.max(60), Validators.min(18), Validators.pattern(this.numberregex)])],
+      dob: ["", Validators.compose([Validators.required])],
+      gender: ["", Validators.required],
+      country: ["", Validators.required],
+      searchctrl: [""],
+      number: ["", Validators.compose([Validators.required, Validators.maxLength(10), Validators.minLength(10), Validators.pattern(this.numberregex)])],
+      email: ["", Validators.compose([Validators.required, Validators.maxLength(32), Validators.pattern(this.emailregex)])],
+      password: ["", Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(32)])],
+      confirm_password: ["", Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(32)])]
+    })
+
+    this.signupForm.get('searchctrl').valueChanges
+      .subscribe((val: any) => {
+        this.filterOptions(val)
+      });
+    console.log(this.filteredOptions1);
+  }
+
+  private filterOptions(value: any) {
+    // const filterValue = value.toLowerCase();
+    // return this.countries.filter(option => option.toLowerCase().includes(filterValue));
+    if (!this.countries) {
+      return
+    }
+    if (!value) {
+      this.filteredOptions1.next(this.countries.slice());
+      return;
+    }
+    else {
+      value = value.toLowerCase();
+    }
+    this.filteredOptions1.next(
+      this.countries.filter(ele => ele.toLowerCase().indexOf(value) > -1)
+    );
+
+  }
+
+
+  signupfn() {
+    console.log(this.signupForm.value)
+    // this.service.createData(this.signupForm.value);
+  }
+
+
+
+
+  getcontrol(name: any): AbstractControl | null {
+    return this.signupForm.get(name)
+
+
+  }
 }

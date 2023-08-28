@@ -30,6 +30,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ButtonModule } from 'primeng/button';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import {MatMenuModule} from '@angular/material/menu';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import {MatMenuModule} from '@angular/material/menu';
     MatSortModule,
     MatInputModule,
     MatFormFieldModule,
+    NgxMatSelectSearchModule,
     ButtonModule,
     MatMenuModule,
     ServiceWorkerModule.register('ngsw-worker.js', {

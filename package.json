@@ -7,10 +7,10 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "package":"npm run electron & npm run pack",
-    "electron":"ng build --base-href ./ && electron .",
-    "elect":"electron .",
-    "pack":"electron-packager . --asar"
+    "package": "npm run electron & npm run pack",
+    "electron": "ng build --base-href ./ && electron .",
+    "elect": "electron .",
+    "pack": "electron-packager . --asar"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +27,7 @@
     "@angular/service-worker": "^16.1.0",
     "electron": "^25.5.0",
     "electron-packager": "^17.1.1",
+    "ngx-mat-select-search": "^7.0.2",
     "primeng": "^16.1.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

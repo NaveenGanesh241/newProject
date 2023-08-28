@@ -105,9 +105,13 @@
           <div class="formval">
               <mat-label>Country</mat-label>
               <mat-select id="country" placeholder="Country" formControlName="country" [ngClass]="{error : getcontrol('country')?.errors && getcontrol('country')?.touched}">
-              <mat-option>None</mat-option>
-              <mat-option *ngFor="let country of countries" [value]="country">{{country}}</mat-option>
+                <mat-option>
+                  <ngx-mat-select-search [formControl]="signupForm.get('searchctrl')" placeholder="search"></ngx-mat-select-search>
+
+                </mat-option>
+              <mat-option *ngFor="let country of filteredOptions1 | async" [value]="country">{{country}}</mat-option>
               </mat-select>
+              
               <div *ngIf="getcontrol('country')?.errors && getcontrol('country')?.touched">
                   <small class="warn" *ngIf="getcontrol('country')?.errors?.['required']">Country is required</small>
               </div>
