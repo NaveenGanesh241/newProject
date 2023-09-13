@@ -359,7 +359,7 @@ export class SigninComponent {
 
 
   signupfn() {
-    console.log(this.signupForm.value)
+    console.log(this.signupForm.controls)
     // this.service.createData(this.signupForm.value);
   }
 
